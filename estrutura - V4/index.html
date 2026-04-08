@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Site Profissional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <nav class="menu-lateral">
+        <h2>📚 Menu</h2>
+        <ul>
+            <li><a href="conteudo1.html" target="frameConteudo">🎥 Vídeos</a></li>
+            <li><a href="conteudo2.html" target="frameConteudo">🖼️ Imagens</a></li>
+            <li><a href="conteudo3.html" target="frameConteudo">📄 Sobre</a></li>
+            <li><a href="admin.html" target="frameConteudo">⚙️ Admin</a></li>
+        </ul>
+        <button onclick="document.body.classList.toggle('dark')">🌙 Dark Mode</button>
+        <button onclick="window.location.href='login.html'" style="margin-top:10px; background:#e74c3c; color:white;">🚪 Sair</button>
+    </nav>
+    <header class="cabecalho"><h1>🌐 Painel Mini Site Profissional</h1></header>
+    <main class="principal">
+        <iframe name="frameConteudo" src="conteudo1.html"></iframe>
+    </main>
+    <footer class="rodape">© 2026 - Seu Projeto Final</footer>
+</div>
+</body>
+</html>

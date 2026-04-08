@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body">
+<div class="login-box">
+    <h2>📝 Cadastro</h2>
+    <input type="text" id="user" placeholder="Novo Usuário">
+    <input type="password" id="pass" placeholder="Nova Senha">
+    <button onclick="cadastrar()">Salvar</button>
+    <a href="login.html">Voltar ao Login</a>
+</div>
+<script>
+async function cadastrar() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+    const res = await fetch('http://localhost:3000/cadastro', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ user, pass })
+    });
+    if(res.ok) { alert("Cadastrado com sucesso!"); window.location.href="login.html"; }
+    else alert("Erro ao cadastrar.");
+}
+</script>
+</body>
+</html>

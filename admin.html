@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table { width: 100%; border-collapse: collapse; background: white; color: black; border-radius: 8px; }
+        th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+    </style>
+</head>
+<body class="pagina">
+<div class="conteudo">
+    <h2>⚙️ Gestão de Usuários</h2>
+    <table id="tabela">
+        <thead><tr><th>ID</th><th>Usuário</th><th>Ação</th></tr></thead>
+        <tbody id="lista"></tbody>
+    </table>
+</div>
+<script>
+async function carregar() {
+    const res = await fetch('http://localhost:3000/usuarios');
+    const dados = await res.json();
+    document.getElementById('lista').innerHTML = dados.map(u => `
+        <tr><td>${u.id}</td><td>${u.usuario}</td>
+        <td><button onclick="remover(${u.id})" style="background:red; color:white; border:none; padding:5px; cursor:pointer;">Excluir</button></td></tr>
+    `).join('');
+}
+async function remover(id) {
+    if(confirm("Deseja excluir?")) {
+        await fetch(`http://localhost:3000/usuarios/${id}`, { method: 'DELETE' });
+        carregar();
+    }
+}
+carregar();
+</script>
+</body>
+</html>
